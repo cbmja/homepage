@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<div layout:fragment="content">
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">LOCATION</h1>
+            <p class="hero-subtitle">편리한 위치와 접근성 좋은 환경에서 만나보세요</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="section text-center">
+            <h2 class="section-title">FIND US</h2>
+            <p class="section-subtitle">최적의 위치에서 최고의 서비스를 제공합니다</p>
+            <div class="divider"></div>
+        </div>
+
+        <!-- 지도 섹션 -->
+        <div class="section">
+            <div class="row" style="border: 1px solid rgba(0, 0, 0, 0.3);">
+                <div class="col-lg-12">
+                    <!-- 카카오맵 API를 사용한 지도 표시 -->
+                    <div id="map" style="width:100%;height:500px;"></div>
+
+                    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=YOUR_KAKAO_MAP_API_KEY"></script>
+                    <script th:inline="javascript">
+                        document.addEventListener('DOMContentLoaded', function() {
+                            var container = document.getElementById('map');
+                            var options = {
+                                center: new kakao.maps.LatLng(37.5665, 126.9780), // 서울 시청 좌표 (실제 위치로 변경 필요)
+                                level: 3
+                            };
+
+                            var map = new kakao.maps.Map(container, options);
+
+                            // 마커 표시
+                            var markerPosition = new kakao.maps.LatLng(37.5665, 126.9780);
+                            var marker = new kakao.maps.Marker({
+                                position: markerPosition
+                            });
+                            marker.setMap(map);
+
+                            // 인포윈도우 표시
+                            var iwContent = '<div style="padding:5px;">헬스 트레이닝 센터</div>';
+                            var infowindow = new kakao.maps.InfoWindow({
+                                content: iwContent
+                            });
+                            infowindow.open(map, marker);
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <!-- 주소 및 연락처 -->
+<!--
+        <div class="section">
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="location-info">
+                        <h3 class="content-title">ADDRESS</h3>
+                        <div class="location-divider"></div>
+                        <address>
+                            <p>서울특별시 강남구 테헤란로 123</p>
+                            <p>헬스빌딩 2층</p>
+                            <p><strong>전화:</strong> 02-123-4567</p>
+                            <p><strong>이메일:</strong> info@healthtraining.com</p>
+                        </address>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                    <div class="location-info">
+                        <h3 class="content-title">HOURS</h3>
+                        <div class="location-divider"></div>
+                        <table class="table table-borderless">
+                            <tbody>
+                            <tr>
+                                <td>월요일 - 금요일</td>
+                                <td>06:00 - 23:00</td>
+                            </tr>
+                            <tr>
+                                <td>토요일</td>
+                                <td>08:00 - 22:00</td>
+                            </tr>
+                            <tr>
+                                <td>일요일 및 공휴일</td>
+                                <td>09:00 - 18:00</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+-->
+
+        <!-- 교통 안내 -->
+        <div class="section bg-light py-5">
+            <div class="row">
+                <h2 class="section-title text-center">DIRECTIONS</h2>
+                <div class="divider mx-auto"></div>
+
+                <div class="row mt-5" style="padding: 0; margin: auto;">
+                    <div class="col-md-6 mb-4" style="padding-left: 0;">
+                        <div class="direction-item">
+                            <h4><i class="fas fa-subway mr-2"></i> 지하철</h4>
+                            <ul>
+                                <li>2호선 강남역 3번 출구에서 도보 5분</li>
+                                <li>신분당선 강남역 5번 출구에서 도보 7분</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4" style="padding-right: 0; margin-left: auto;">
+                        <div class="direction-item">
+                            <h4><i class="fas fa-bus mr-2"></i> 버스</h4>
+                            <ul>
+                                <li>간선버스: 140, 144, 145, 340, 740</li>
+                                <li>지선버스: 3412, 4412</li>
+                                <li>광역버스: 9100, 9200, 9300</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4" style="padding-left: 0;">
+                        <div class="direction-item">
+                            <h4><i class="fas fa-car mr-2"></i> 주차 안내</h4>
+                            <p>헬스 트레이닝 센터 회원은 건물 지하 주차장을 3시간 무료로 이용하실 수 있습니다.</p>
+                            <p>주차 확인은 데스크에서 가능하며, 추가 시간은 30분당 1,000원의 요금이 부과됩니다.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4" style="padding-right: 0; margin-left: auto;">
+                        <div class="direction-item">
+                            <h4><i class="fas fa-map-marker-alt mr-2"></i> 영업 시간</h4>
+                            <ul>
+                                <li>평일 ~~</li>
+                                <li>토요일 ~~</li>
+                                <li>일요일 ~~</li>
+                                <li>공휴일 ~~</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</html>

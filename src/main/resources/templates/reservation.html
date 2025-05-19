@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<div layout:fragment="content">
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">RESERVATION</h1>
+            <p class="hero-subtitle">간편한 예약 시스템으로 원하는 프로그램을 신청하세요</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="section text-center">
+            <h2 class="section-title">BOOK YOUR CLASS</h2>
+            <p class="section-subtitle">원하는 날짜와 시간에 프로그램을 예약하세요</p>
+            <div class="divider"></div>
+        </div>
+
+        <div class="section">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <!-- 달력 -->
+                    <div class="reservation-card mb-5">
+                        <h3 class="reservation-title">날짜 선택</h3>
+                        <div class="reservation-divider"></div>
+                        <div id="calendar"></div>
+
+                        <!-- 달력 스크립트 -->
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css">
+                        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+                        <script th:inline="javascript">
+                            document.addEventListener('DOMContentLoaded', function() {
+                                var calendarEl = document.getElementById('calendar');
+                                var calendar = new FullCalendar.Calendar(calendarEl, {
+                                    initialView: 'dayGridMonth',
+                                    headerToolbar: {
+                                        left: 'prev,next today',
+                                        center: 'title',
+                                        right: 'dayGridMonth,timeGridWeek'
+                                    },
+                                    selectable: true,
+                                    select: function(info) {
+                                        // 날짜 선택 시 이벤트
+                                        document.getElementById('selectedDate').value = info.startStr;
+                                        loadAvailableSlots(info.startStr);
+                                    },
+                                    events: [
+                                        // 예시 이벤트 데이터
+                                        {
+                                            title: '요가 클래스',
+                                            start: '2023-06-15T10:00:00',
+                                            end: '2023-06-15T11:30:00'
+                                        },
+                                        {
+                                            title: '필라테스 클래스',
+                                            start: '2023-06-17T14:00:00',
+                                            end: '2023-06-17T15:30:00'
+                                        },
+                                        {
+                                            title: 'PT 세션',
+                                            start: '2023-06-20T16:00:00',
+                                            end: '2023-06-20T17:00:00'
+                                        }
+                                    ]
+                                });
+                                calendar.render();
+
+                                // 시간대 로드 함수
+                                function loadAvailableSlots(date) {
+                                    // 실제로는 서버에서 해당 날짜의 가능한 시간대를 가져와야 함
+                                    var timeSlotSelect = document.getElementById('timeSlot');
+                                    timeSlotSelect.innerHTML = '';
+
+                                    // 예시 시간대
+                                    var slots = ['09:00', '10:00', '11:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'];
+
+                                    slots.forEach(function(slot) {
+                                        var option = document.createElement('option');
+                                        option.value = slot;
+                                        option.text = slot;
+                                        timeSlotSelect.appendChild(option);
+                                    });
+
+                                    document.getElementById('timeSlotSection').style.display = 'block';
+                                }
+                            });
+                        </script>
+                    </div>
+
+                    <!-- 예약 폼 -->
+                    <div class="reservation-card">
+                        <h3 class="reservation-title">예약 정보 입력</h3>
+                        <div class="reservation-divider"></div>
+                        <form id="reservationForm" th:action="@{/reservation/submit}" method="post">
+                            <input type="hidden" id="selectedDate" name="selectedDate">
+
+                            <div class="mb-4">
+                                <label for="program" class="form-label">프로그램 선택</label>
+                                <select class="form-select" id="program" name="program" required>
+                                    <option value="" selected disabled>프로그램을 선택하세요</option>
+                                    <option value="yoga">요가</option>
+                                    <option value="pilates">필라테스</option>
+                                    <option value="rehab">재활운동</option>
+                                    <option value="pt">퍼스널 트레이닝</option>
+                                    <option value="spinning">스피닝</option>
+                                    <option value="zumba">줌바</option>
+                                    <option value="hiit">HIIT</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="trainer" class="form-label">트레이너 선택</label>
+                                <select class="form-select" id="trainer" name="trainer">
+                                    <option value="" selected disabled>트레이너를 선택하세요</option>
+                                    <option value="kim">김민수 트레이너</option>
+                                    <option value="lee">이지연 트레이너</option>
+                                    <option value="park">박준호 트레이너</option>
+                                    <option value="choi">최서연 트레이너</option>
+                                    <option value="jung">정현우 트레이너</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-4" id="timeSlotSection" style="display: none;">
+                                <label for="timeSlot" class="form-label">시간 선택</label>
+                                <select class="form-select" id="timeSlot" name="timeSlot" required>
+                                    <option value="" selected disabled>시간을 선택하세요</option>
+                                </select>
+                            </div>
+
+                            <hr class="my-4">
+
+                            <h4 class="mb-3">개인 정보</h4>
+
+                            <div class="mb-3">
+                                <label for="name" class="form-label">이름</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">연락처</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="010-0000-0000" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label">이메일</label>
+                                <input type="email" class="form-control" id="email" name="email">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="message" class="form-label">추가 요청사항</label>
+                                <textarea class="form-control" id="message" name="message" rows="3"></textarea>
+                            </div>
+
+                            <div class="mb-4 form-check">
+                                <input type="checkbox" class="form-check-input" id="agree" name="agree" required>
+                                <label class="form-check-label" for="agree">개인정보 수집 및 이용에 동의합니다.</label>
+                            </div>
+
+                            <button type="submit" class="btn btn-dark w-100 py-3">예약하기</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section bg-light py-5">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="section-title text-center">RESERVATION GUIDE</h2>
+                    <div class="divider mx-auto"></div>
+
+                    <div class="reservation-guide mt-5">
+                        <ul>
+                            <li>예약은 최소 24시간 전에 완료해 주세요.</li>
+                            <li>예약 취소는 예약 시간 12시간 전까지 가능합니다.</li>
+                            <li>당일 취소 또는 노쇼의 경우 예약 횟수에서 차감됩니다.</li>
+                            <li>그룹 클래스는 최소 3명 이상 예약 시 진행됩니다.</li>
+                            <li>문의사항은 02-123-4567로 연락 주세요.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

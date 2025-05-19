@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<div layout:fragment="content">
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">PROGRAMS</h1>
+            <p class="hero-subtitle">다양한 프로그램으로 건강한 라이프스타일을 만들어 드립니다</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="section text-center">
+            <h2 class="section-title">OUR PROGRAMS</h2>
+            <p class="section-subtitle">개인의 목표와 상태에 맞는 맞춤형 프로그램</p>
+            <div class="divider"></div>
+        </div>
+
+        <!-- 요가 프로그램 -->
+        <div class="section" id="yoga">
+            <div class="row align-items-center">
+                <div class="col-lg-6" style="width: 500px; height: 500px; border: 1px solid rgba(0, 0, 0, 0.3);">
+                    <img src="/images/yoga-program.jpg" alt="요가 프로그램" class="img-fluid">
+                </div>
+                <div class="col-lg-6" style="margin-left: auto;">
+                    <h3 class="content-title">YOGA</h3>
+                    <div class="program-divider"></div>
+                    <p class="content-text">몸과 마음의 균형을 찾는 다양한 요가 클래스를 제공합니다. 초보자부터 숙련자까지 모두가 참여할 수 있는 다양한 레벨의 수업이 준비되어 있습니다.</p>
+
+                    <h5 class="program-subtitle">클래스 종류</h5>
+                    <ul class="program-list">
+                        <li><strong>모닝 요가</strong> - 하루를 활기차게 시작하는 가벼운 요가</li>
+                        <li><strong>하타 요가</strong> - 기본 자세와 호흡에 집중하는 요가</li>
+                        <li><strong>빈야사 요가</strong> - 호흡과 움직임을 연결하는 동적인 요가</li>
+                        <li><strong>아쉬탕가 요가</strong> - 정해진 순서로 진행되는 강도 높은 요가</li>
+                        <li><strong>인요가</strong> - 깊은 스트레칭과 명상에 중점을 둔 요가</li>
+                    </ul>
+
+                    <div class="program-info">
+                        <div class="row">
+                            <div class="col-6">
+                                <p><strong>수업 시간:</strong> 매일 다양한 시간대</p>
+                                <p><strong>강사:</strong> 이지연 외 3명</p>
+                            </div>
+                            <div class="col-6 text-end">
+                                <a href="/reservation" class="btn btn-outline-dark">수업 예약하기</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 필라테스 프로그램 -->
+        <div class="section bg-light py-5" id="pilates">
+            <div class="row align-items-center flex-row-reverse">
+                <div class="col-lg-6" style="width: 500px; height: 500px; border: 1px solid rgba(0, 0, 0, 0.3);">
+                    <img src="/images/pilates-program.jpg" alt="필라테스 프로그램" class="img-fluid">
+                </div>
+                <div class="col-lg-6" style="margin-right: auto;">
+                    <h3 class="content-title">PILATES</h3>
+                    <div class="program-divider"></div>
+                    <p class="content-text">필라테스는 코어 근육을 강화하고 자세를 개선하며 유연성을 향상시키는 운동입니다. 매트 필라테스부터 기구 필라테스까지 다양한 클래스를 제공합니다.</p>
+
+                    <h5 class="program-subtitle">클래스 종류</h5>
+                    <ul class="program-list">
+                        <li><strong>매트 필라테스</strong> - 매트 위에서 진행하는 기본 필라테스</li>
+                        <li><strong>리포머 필라테스</strong> - 리포머 기구를 이용한 필라테스</li>
+                        <li><strong>캐딜락 필라테스</strong> - 캐딜락 기구를 활용한 고급 필라테스</li>
+                        <li><strong>바렐 필라테스</strong> - 바렐 기구를 이용한 필라테스</li>
+                        <li><strong>임산부 필라테스</strong> - 임산부를 위한 안전한 필라테스</li>
+                    </ul>
+
+                    <div class="program-info">
+                        <div class="row">
+                            <div class="col-6">
+                                <p><strong>수업 시간:</strong> 매일 다양한 시간대</p>
+                                <p><strong>강사:</strong> 김수진 외 2명</p>
+                            </div>
+                            <div class="col-6 text-end">
+                                <a href="/reservation" class="btn btn-outline-dark">수업 예약하기</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 재활운동 프로그램 -->
+        <div class="section" id="rehab">
+            <div class="row align-items-center">
+                <div class="col-lg-6" style="width: 500px; height: 500px; border: 1px solid rgba(0, 0, 0, 0.3);">
+                    <img src="/images/rehab-program.jpg" alt="재활운동 프로그램" class="img-fluid">
+                </div>
+                <div class="col-lg-6" style="margin-left: auto;">
+                    <h3 class="content-title">REHABILITATION</h3>
+                    <div class="program-divider"></div>
+                    <p class="content-text">물리치료사 자격을 갖춘 전문가들이 부상 후 회복, 만성 통증 관리, 수술 후 재활 등 개인의 상태에 맞는 맞춤형 재활 프로그램을 제공합니다.</p>
+
+                    <h5 class="program-subtitle">프로그램 종류</h5>
+                    <ul class="program-list">
+                        <li><strong>척추 재활</strong> - 허리 및 목 통증 완화를 위한 프로그램</li>
+                        <li><strong>관절 재활</strong> - 무릎, 어깨, 발목 등 관절 부상 회복 프로그램</li>
+                        <li><strong>스포츠 재활</strong> - 스포츠 활동 중 발생한 부상 회복 프로그램</li>
+                        <li><strong>수술 후 재활</strong> - 수술 후 기능 회복을 위한 단계별 프로그램</li>
+                        <li><strong>자세 교정</strong> - 잘못된 자세로 인한 통증 개선 프로그램</li>
+                    </ul>
+
+                    <div class="program-info">
+                        <div class="row">
+                            <div class="col-6">
+                                <p><strong>진행 방식:</strong> 1:1 맞춤형 세션</p>
+                                <p><strong>담당:</strong> 박준호 트레이너</p>
+                            </div>
+                            <div class="col-6 text-end">
+                                <a href="/reservation" class="btn btn-outline-dark">상담 예약하기</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PT 프로그램 -->
+        <div class="section bg-light py-5" id="pt">
+            <div class="row align-items-center flex-row-reverse">
+                <div class="col-lg-6" style="width: 500px; height: 500px; border: 1px solid rgba(0, 0, 0, 0.3);">
+                    <img src="/images/pt-program.jpg" alt="PT 프로그램" class="img-fluid">
+                </div>
+                <div class="col-lg-6" style="margin-right: auto;">
+                    <h3 class="content-title">PERSONAL TRAINING</h3>
+                    <div class="program-divider"></div>
+                    <p class="content-text">전문 트레이너와 함께하는 1:1 맞춤형 트레이닝으로 체계적이고 효과적인 운동을 경험하세요. 개인의 체력 수준, 목표, 건강 상태를 고려한 프로그램을 제공합니다.</p>
+
+                    <h5 class="program-subtitle">PT 프로그램 종류</h5>
+                    <ul class="program-list">
+                        <li><strong>체중 관리</strong> - 체중 감량 및 체지방 감소를 위한 프로그램</li>
+                        <li><strong>근력 강화</strong> - 근육량 증가와 근력 향상을 위한 프로그램</li>
+                        <li><strong>체형 교정</strong> - 균형 잡힌 체형을 위한 프로그램</li>
+                        <li><strong>기능성 트레이닝</strong> - 일상생활 기능 향상을 위한 프로그램</li>
+                        <li><strong>시니어 PT</strong> - 노년층을 위한 안전한 트레이닝 프로그램</li>
+                    </ul>
+
+                    <div class="program-info">
+                        <div class="row">
+                            <div class="col-6">
+                                <p><strong>세션:</strong> 50분/회</p>
+                                <p><strong>트레이너:</strong> 전체 트레이너 중 선택 가능</p>
+                            </div>
+                            <div class="col-6 text-end">
+                                <a href="/reservation" class="btn btn-outline-dark">PT 신청하기</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 그룹 클래스 -->
+        <div class="section" id="group">
+            <div class="text-center mb-5">
+                <h2 class="section-title">GROUP CLASSES</h2>
+                <p class="section-subtitle">함께 운동하는 즐거움을 느껴보세요</p>
+                <div class="divider"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="group-class">
+                        <img src="/images/spinning-class.jpg" class="img-fluid" alt="스피닝 클래스">
+                        <div class="group-class-content">
+                            <h4>SPINNING</h4>
+                            <div class="program-divider"></div>
+                            <p>실내 자전거를 이용한 고강도 유산소 운동으로, 신나는 음악과 함께 칼로리 소모와 하체 강화에 효과적입니다.</p>
+                            <p><strong>시간:</strong> 월/수/금 오후 7시</p>
+                            <a href="/reservation" class="btn btn-outline-dark btn-sm">예약하기</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="group-class">
+                        <img src="/images/zumba-class.jpg" class="img-fluid" alt="줌바 클래스">
+                        <div class="group-class-content">
+                            <h4>ZUMBA</h4>
+                            <div class="program-divider"></div>
+                            <p>라틴 음악과 댄스를 결합한 즐거운 유산소 운동으로, 스트레스 해소와 체중 감량에 도움이 됩니다.</p>
+                            <p><strong>시간:</strong> 화/목 오후 6시, 토 오전 11시</p>
+                            <a href="/reservation" class="btn btn-outline-dark btn-sm">예약하기</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="group-class">
+                        <img src="/images/hiit-class.jpg" class="img-fluid" alt="HIIT 클래스">
+                        <div class="group-class-content">
+                            <h4>HIIT</h4>
+                            <div class="program-divider"></div>
+                            <p>고강도 인터벌 트레이닝으로, 짧은 시간 내에 최대 효과를 볼 수 있는 효율적인 운동입니다.</p>
+                            <p><strong>시간:</strong> 월/수/금 오전 6시, 화/목 오후 8시</p>
+                            <a href="/reservation" class="btn btn-outline-dark btn-sm">예약하기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</html>
